@@ -1,0 +1,82 @@
+:root{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1rem;
+    --page-color: rgb(243, 224, 224);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--page-color);
+}
+
+.usuario{
+    border: solid 1px black;
+    margin: 20px;
+    padding: 15px;
+}
+
+.login {
+    border: solid 1px black;
+    margin: 20px;
+    padding: 15px;
+}
+
+td {
+    padding: 5px;
+}
+
+.datos {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+button {
+    font-size: 1rem;
+    margin-top: 5px;
+}
+
+.continuar {
+    padding: 2px;
+}
+
+.acceder {
+    margin: 10px 7px 7px 7px; 
+}
+
+/* Subida de datos de usuario*/
+h1{
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.olvidar {
+    margin: 5px 0px 1px 7px;
+}
+
+.volver-alta {
+    margin: 5px 0px 1px 7px;
+}
+
+/*Subida de foto*/
+
+/**/
+.h1-alta, .h1-login {
+    margin-bottom: 15px;
+    margin-top: 20px; 
+}
+
+/*Login*/
+.login {
+    /*top, right, bottom, left*/
+    margin: 20px 170px 30px 170px;
+}
+
+footer>p {
+    margin: 10px;
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Formulario</title>
+</head>
+<body>
+    <header>
+        <h1>RITMO: TU CLUB DE RUNNING</h1>
+    </header>
+    <main>
+        <h2>Hazme socio del club de running Ritmo</h2>
+        <p>Los campos marcados con * son obligatorios</p>
+        <form class="haztesocio" action="#" method="get">
+            <fieldset>
+                <legend>Datos personales y de contacto</legend>
+                <p>Nombre * <br><input type="text" name="nombre" size="100" required></p>
+                <p>Contraseña * <br><input type="password" name="password" size="100" minlength="6" required></p>
+                <p>Correo electrónico * <br><input type="email" name="Correo" size="100" required></p>
+                <p>Teléfono * <br><input type="number" name="Teléfono" minlength="9" size="100" required></p>
+                <p>Fecha de nacimiento: <br><input type="date" name="nacido" size="100"></p>
+                <p></p>
+            </fieldset>
+
+            <fieldset>
+                <legend>Datos de login</legend>
+                <p>Usuario * <br><input type="text" name="nombre" size="100" required></p>
+                <p>Contraseña * <br><input type="password" name="password" size="100" minlength="6" required></p>
+                <p>Repetir contraseña * <br><input type="email" name="Correo" size="100" required></p>
+                <p></p>
+            </fieldset>
+
+            <fieldset>
+                <legend>Tipo de cuota *</legend>
+                <p>
+                <input type="radio" name="mensual" value="h"> Mensual (30€)
+                <br><input type="radio" name="trimestral" value="m"> Trimestral (45€)
+                <br><input type="radio" name="anual" value="m"> Anual (100€)
+            </p>
+            </fieldset>
+
+            <fieldset>
+                <legend>Otras informaciones</legend>
+                <p>¿Por qué estás interesado en hacerte socio?</p>
+                <textarea id="motivos" name="motivos" rows="7"></textarea>
+                <p>¿Por qué medio nos has conocido?
+                <select id="medio" name="medio">
+                    <option value="" hidden>Selecciona una opción</option>
+                    <option value="prensa">Prensa</option>
+                    <option value="facebook">Facebook</option>
+                    <option value="Instagram">Instagram</option>
+                    <option value="socio">Otro socio</option>
+                </select>
+                </p>
+                <p>
+                </p>
+                <p>Indica otros intereses: <br></p>
+                <input type="checkbox" name="natacion"> Natación
+                <input type="checkbox" name="senderismo"> Senderismo
+                <input type="checkbox" name="ciclismo"> Ciclismo
+            </fieldset>
+            <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus vel impedit porro fugiat voluptatem cumque facilis recusandae hic iste ipsam exercitationem, nisi nihil possimus nam illum aspernatur voluptatum consequatur rem!
+                <br><br>
+                <input type="checkbox" name="acepto">He leído y acepto la política de privacidad*
+            </p>
+            <p>
+                <button type="submit">ENVIAR</button>
+            </p>
+        </form>
+    </main>
+
+    <footer>
+        <hr>
+        <p>Autor: Alexa Milla Villavicencio</p>
+    </footer>
+</body>
+</html>
