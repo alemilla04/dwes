@@ -80,3 +80,7 @@ h1{
 footer>p {
     margin: 10px;
 }
+
+.imagen, .ir-login {
+    margin: 10px;
+}
