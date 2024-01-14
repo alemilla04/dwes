@@ -2,7 +2,6 @@
 class Usuario{
     public $nombre = "";
     public $apellidos = "";
-    public $telefono = "";
     public $email = "";
     public $password = "";
     public $imagen = "";

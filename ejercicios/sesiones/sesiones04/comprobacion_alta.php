@@ -9,20 +9,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if($_POST["submit"] == "continuar"){
         $nombre = recoge("nombre");
         $apellidos = recoge("apellidos");
-        $telefono = recoge("telefono");
         $email = recoge("email");
         $password = recoge("password");
         $password2 = recoge("password2");
 
         $_SESSION["usuario"]["nombre"] = $nombre;
         $_SESSION["usuario"]["apellidos"] = $apellidos;
-        $_SESSION["usuario"]["telefono"] = $telefono;
         $_SESSION["ok"] = true;
         
-        // if($_FILES["image"]["error"] == UPLOAD_ERR_OK){
-        //     $nombreFichero = $_FILES["image"]["name"];
-        //     move_uploaded_file($_FILES["image"]["tmp_name"], "bbdd/". $_FILES["image"]["name"]);
-        // }
+        if($_FILES["image"]["error"] == UPLOAD_ERR_OK){
+            $nombreFichero = $_FILES["image"]["name"];
+            move_uploaded_file($_FILES["image"]["tmp_name"], "bbdd/". $_FILES["image"]["name"]);
+        }
 
         if(isset($email) && $email != ""){
             if(!strpos($email, '@')){
@@ -53,11 +51,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $usuario = new Usuario;
             $usuario->nombre = $nombre;
             $usuario->apellidos = $apellidos;
-            $usuario->telefono = $telefono;
             $usuario->email = $email;
-            $usuario->password = $password;
-            // $usuario->imagen = $nombreFichero;
+            $usuario->imagen = $nombreFichero;
             $file = "bbdd/data.json";
+
+            $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+            $usuario->password = $passwordHash;
 
             $jsonData = file_get_contents("./{$file}", FILE_USE_INCLUDE_PATH);
             
@@ -71,10 +70,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $json_lista_personas = json_encode($lista_personas, JSON_PRETTY_PRINT);
     
             file_put_contents("bbdd/data.json", $json_lista_personas);
-            header('Location: login.php');
+            unset($_SESSION["usuario"]);
         }
         
-        // $usuario->imagen = $imagen;
     }
-
+    
 }
+
+header('Location: login.php');

@@ -1,7 +1,8 @@
 :root{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1rem;
-    --page-color: rgb(243, 224, 224);
+    --main-color: rgb(241, 227, 227);
+    --header-footer-color: rgb(221, 189, 189);
 }
 
 * {
@@ -12,75 +13,187 @@
 
 body {
     min-height: 100vh;
+    background-color: var(--main-color);
+    display: grid;
+    grid-template-areas: 
+    "encabezado"
+    "nav"
+    "principal"
+    "pie"
+    ;
+    grid-template-rows: auto auto 1fr auto;
+}
+
+header {
+    grid-area: encabezado;
+}
+
+nav {
+    grid-area: nav;
+}
+
+main {
     background-color: var(--page-color);
+    grid-area: principal;
+}
+
+footer {
+    grid-area: pie;
 }
 
 .usuario{
     border: solid 1px black;
     margin: 20px;
     padding: 15px;
-}
-
-.login {
-    border: solid 1px black;
-    margin: 20px;
-    padding: 15px;
-}
-
-td {
-    padding: 5px;
-}
-
-.datos {
-    margin-top: 10px;
-    margin-bottom: 20px;
-}
-
-button {
-    font-size: 1rem;
-    margin-top: 5px;
-}
-
-.continuar {
-    padding: 2px;
-}
-
-.acceder {
-    margin: 10px 7px 7px 7px; 
-}
-
-/* Subida de datos de usuario*/
-h1{
-    text-align: center;
-    text-transform: uppercase;
-}
-
-.olvidar {
-    margin: 5px 0px 1px 7px;
-}
-
-.volver-alta {
-    margin: 5px 0px 1px 7px;
-}
-
-/*Subida de foto*/
-
-/**/
-.h1-alta, .h1-login {
-    margin-bottom: 15px;
-    margin-top: 20px; 
-}
-
-/*Login*/
-.login {
-    /*top, right, bottom, left*/
-    margin: 20px 170px 30px 170px;
+    /* text-align: center; */
 }
 
 footer>p {
     margin: 10px;
 }
 
-.imagen, .ir-login {
+footer {
+    background-color: var(--header-footer-color);
+}
+
+
+td {
+    padding: 5px;
+}
+
+.datos, .login {
+    /* margin-top: 10px;
+    margin-bottom: 20px; */
+    /* text-align: center; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.subida {
+    margin-top: 15px;
+}
+
+.continuar {
+    font-size: 1rem;
+    margin-top: 5px;
+    padding: 10px;
+    font-weight: bold;
+    color: white;
+    background-color: #333333;
+    border-radius: 5px;
+}
+
+.continuar~p {
+    margin-top: 25px;
+}
+
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* menu */
+.h1-alta {
+    background-color: var(--header-footer-color);
+    padding: 10px;
+}
+
+nav>ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+nav>ul>li.izquierda {
+    float: left;      
+}
+
+nav>ul>li.derecha {
+    float: right;      
+}
+
+a.menu {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+a.menu2 {
+    display: block;
+    color: red;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+a.menu:hover {
+    background-color: green;
+}
+
+/* ####### */
+.h3-alta {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+/*Subida de foto*/
+
+/**/
+
+
+/*Login*/
+.olvidar {
+    margin: 30px 0px 1px 7px;
+}
+
+.olvidar a {
+    text-decoration: none;
+    color: black
+}
+
+.olvidar a:hover {
+    color: white;
+    background-color: #333333;   
+}
+
+.acceder {
+    margin: 30px 7px 7px 7px; 
+    padding: 5px 5px;    
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    background-color: #333333;
+    border-radius: 5px;
+}
+
+.login {
+    margin: 20px 170px 30px 170px;
+    border: solid 5px #333333;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.image {
     margin: 10px;
+}
+
+.info-usuario, .info-usuario td, .info-usuario th, .info-usuario tr, .info-usuario thead, .info-usuario tbody {
+    border: solid 2px black;
+    border-collapse: collapse;
+}
+
+.info-usuario td, .info-usuario th {
+    padding: 5px;
+    text-align: center;
+}
+
+.info-usuario {
+    margin: auto;
 }

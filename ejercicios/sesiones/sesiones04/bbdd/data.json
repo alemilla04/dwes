@@ -1,34 +1,10 @@
 [
     {
-        "nombre": null,
-        "apellidos": null,
-        "telefono": null,
-        "email": "hola@gmail",
-        "password": "124",
-        "imagen": "default.jpg"
-    },
-    {
-        "nombre": null,
-        "apellidos": null,
-        "telefono": null,
-        "email": "ale@gmail",
-        "password": "123",
-        "imagen": "default.jpg"
-    },
-    {
-        "nombre": null,
-        "apellidos": null,
-        "telefono": null,
-        "email": "adios@gmail",
-        "password": "12",
-        "imagen": "default.jpg"
-    },
-    {
         "nombre": "Alexa",
         "apellidos": "Milla Villavicencio",
-        "telefono": "629039573",
-        "email": "ale.vmv2004@gmail.com",
-        "password": "Maximiliano04",
-        "imagen": "default.jpg"
+        "email": "alexamilla@gmail.com",
+        "password": "123",
+        "imagen": "alexa.jpg",
+        "telefono": null
     }
 ]

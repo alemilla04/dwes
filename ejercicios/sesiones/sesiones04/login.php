@@ -11,32 +11,29 @@ session_start();
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <header>
-        <h1 class="h1-login">Login</h1>
-    </header>
+    <?php include "menu.php"; ?>
     <main>
         <div class="login">
+        <h3 class="h3-alta">Login</h3>
             <form action="comprobacion_login.php" method="post" enctype="multipart/form-data">
-                <table>
-                    <tr>
-                        <td>Usuario:</td>
-                        <td><input type="text" name="usuario"></td>
-                    </tr>
-                    <tr>
-                        <td>Password:</td> 
-                        <td><input type="text" name="password"></td>    
-                    </tr>
-                </table>
-                <p></p>
-                <button type="submit" class="acceder" name="submit" value="acceder">Acceder</button>
-                <p class="olvidar"><a href="login.html">Olvidé mi contraseña</a></p>
-                <p class="volver_alta"><a href="alta.php">Volver al registro</a></p>
+                <div class="datos">
+                    <table>
+                        <tr>
+                            <td>Usuario:</td>
+                            <td><input type="text" name="usuario"></td>
+                        </tr>
+                        <tr>
+                            <td>Password:</td> 
+                            <td><input type="password" name="password"></td>    
+                        </tr>
+                    </table>
+                    <p></p>
+                    <button type="submit" class="acceder" name="submit" value="acceder">Log in</button>
+                    <p class="olvidar"><a href="login.html">Olvidé mi contraseña</a></p>
+                </div>
             </form>
         </div>
     </main>
-    <footer>
-        <hr>
-        <p>© Alexa Milla Villavicencio</p>
-    </footer>
+    <?php include "footer.php"; ?>
 </body>
 </html>
