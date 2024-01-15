@@ -52,8 +52,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $usuario->nombre = $nombre;
             $usuario->apellidos = $apellidos;
             $usuario->email = $email;
-            $usuario->imagen = $nombreFichero;
             $file = "bbdd/data.json";
+
+            if ($_FILES["fichero"]["error"] == UPLOAD_ERR_OK) {
+                $usuario->imagen = $nombreFichero;
+            }
 
             $passwordHash = password_hash($password, PASSWORD_DEFAULT);
             $usuario->password = $passwordHash;
@@ -77,4 +80,4 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     
 }
 
-header('Location: login.php');
+header('Location: alta.php');

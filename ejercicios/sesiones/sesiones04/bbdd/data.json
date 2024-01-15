@@ -1,10 +1,37 @@
 [
     {
+        "nombre": "juan",
+        "apellidos": "cuello",
+        "email": "kk@gmail.com",
+        "password": "$2y$10$VY5YeDnXGrgQXq1pWkzPj.kIj5.cXy21QfrpwBm36P6KEJrUalGvi",
+        "imagen": null
+    },
+    {
+        "nombre": "carlos",
+        "apellidos": "marin",
+        "email": "hola@gmail",
+        "password": "$2y$10$4IzDMlw0EM\/g\/lJcdM7s2uh0keMUWqpizDGQMisoQ3TFBcQXO0j3O",
+        "imagen": null
+    },
+    {
+        "nombre": "felipe",
+        "apellidos": "suarez",
+        "email": "feli@gmail.com",
+        "password": "$2y$10$NpFzkyh1.TcWuK3VClgEDOIBeWoJNbKxGFXraXz3XzWazAeeGbsjK",
+        "imagen": null
+    },
+    {
         "nombre": "Alexa",
         "apellidos": "Milla Villavicencio",
         "email": "alexamilla@gmail.com",
-        "password": "123",
-        "imagen": "alexa.jpg",
-        "telefono": null
+        "password": "$2y$10$bjEWCtzekSbR60eOO..NkuR7mUBFcRBa3t1BVtYnlRsopOGT\/YZqS",
+        "imagen": null
+    },
+    {
+        "nombre": "Ale",
+        "apellidos": "Milla",
+        "email": "ale@gmail.com",
+        "password": "$2y$10$WbqoyMYHBTaBLBQrsgCAKOZzW2Njl8EwcwE7.7Kd0JZKskcDC2gw2",
+        "imagen": "alexa.jpg"
     }
 ]

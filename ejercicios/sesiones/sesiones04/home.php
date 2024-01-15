@@ -24,7 +24,7 @@ session_start();
     <?php
 
     $lista_usuarios = [];
-    $file = 'data.json';    //la carpeta bbdd debe existir
+    $file = 'data.json';
 
     $jsonData = file_get_contents("./bbdd/{$file}");
     $lista_usuarios = json_decode($jsonData);
@@ -32,7 +32,6 @@ session_start();
     echo '<h2> Total de usuarios de alta: ' . count($lista_usuarios) . '</h2>';
 
     ?>
-        <p> Mostrarmos la fecha y hora de creación del ultimo usuario con una cookie</p>
 
 
     </main>
