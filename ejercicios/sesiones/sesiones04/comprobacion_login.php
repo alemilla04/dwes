@@ -2,10 +2,11 @@
 session_name("Alexa");
 session_start();
 require_once("funciones.php");
+require_once("modelo.php");
 
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $user = recoge("usuario");
+    $username = recoge("usuario");
     $password = recoge("password");
     
     if($password == null or $username == null) {

@@ -8,7 +8,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
     <title>Perfil</title>
 </head>
 <body>
@@ -19,14 +19,14 @@ session_start();
 
         $usuario = $_SESSION['usuarioObjeto'];
 
-        print "<div>";   
-        print "<table>";
+        print "<div class='caja-perfil'>";   
+        print "<table class='tab-perfil'>";
         print "<thead>";
         print "<tr>";
+        print "<th>Foto</th>";
         print "<th>Nombre</th>";
         print "<th>Apellidos</th>";
         print "<th>Email</th>";
-        print "<th>Password</th>";
         print "</tr>";
         print "</thead>";
         print "<tbody>";
@@ -35,7 +35,6 @@ session_start();
         print "<td>$usuario->nombre</td>";
         print "<td>$usuario->apellidos</td>";
         print "<td>$usuario->email</td>";
-        print "<td>$usuario->password</td>";
         print "</tr>";
         print "</tbody>";
         print "</table>";

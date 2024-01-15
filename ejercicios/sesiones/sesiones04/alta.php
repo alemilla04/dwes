@@ -1,6 +1,7 @@
 <?php
 session_name("Alexa");
 session_start();
+require_once("modelo.php");
 // print "<pre>";
 // print_r($_POST);
 // print "</pre>";

@@ -2,6 +2,7 @@
 
 require_once('modelo.php');
 
+session_name("Alexa");
 session_start();
 
 
@@ -31,6 +32,12 @@ session_start();
 
     echo '<h2> Total de usuarios de alta: ' . count($lista_usuarios) . '</h2>';
 
+    if(isset($_COOKIE["Ultimo_usuario"]) && isset($_COOKIE["Ultimo_usuario_fecha"])){
+        $ultimo_usuario = $_COOKIE["Ultimo_usuario"];
+        $ultimo_usuario_fecha = $_COOKIE["Ultimo_usuario_fecha"];
+
+        echo "<p>Último usuario: <strong>" . $ultimo_usuario . "</strong><br>Última fecha de alta: <strong>". $ultimo_usuario_fecha ."</strong></p>";
+    }
     ?>
 
 

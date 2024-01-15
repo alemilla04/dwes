@@ -197,3 +197,13 @@ a.menu:hover {
 .info-usuario {
     margin: auto;
 }
+
+/* PERFIL */
+.tab-perfil, .tab-perfil>tr, .tab-perfil>th, .tab-perfil>thead, .tab-perfil>tbody, .tab-perfil>td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.caja-perfil {
+    text-align: center;
+}

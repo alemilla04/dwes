@@ -1,4 +1,5 @@
 <?php
+require_once("modelo.php");
 
 function recoge($var){
     if(isset($_POST[$var])){
@@ -19,13 +20,14 @@ function checkuser($user, $password){
 
     foreach($lista_usuarios as $usuario){
         if($user === $usuario->email and password_verify($password, $usuario->password)){
-            $usuarioObjeto = new Usuario;
-            $usuarioObjeto->nombre = $usuario->nombre;
-            $usuarioObjeto->apellidos = $usuario->apellidos;
-            $usuarioObjeto->email = $usuario->email;
-            $usuarioObjeto->password = $usuario->password;
-            $usuarioObjeto->imagen = $usuario->imagen;
-            return $usuarioObjeto;
+            // $usuarioObjeto = new Usuario;
+            // $usuarioObjeto->nombre = $usuario->nombre;
+            // $usuarioObjeto->apellidos = $usuario->apellidos;
+            // $usuarioObjeto->email = $usuario->email;
+            // $usuarioObjeto->password = $usuario->password;
+            // $usuarioObjeto->imagen = $usuario->imagen;
+            // return $usuarioObjeto;
+            return $usuario;
         }
     }
     return null;

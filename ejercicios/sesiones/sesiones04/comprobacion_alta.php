@@ -53,6 +53,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $usuario->apellidos = $apellidos;
             $usuario->email = $email;
             $file = "bbdd/data.json";
+            $jsonData = file_get_contents("./{$file}", FILE_USE_INCLUDE_PATH);
 
             if ($_FILES["fichero"]["error"] == UPLOAD_ERR_OK) {
                 $usuario->imagen = $nombreFichero;
@@ -60,8 +61,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             $passwordHash = password_hash($password, PASSWORD_DEFAULT);
             $usuario->password = $passwordHash;
-
-            $jsonData = file_get_contents("./{$file}", FILE_USE_INCLUDE_PATH);
             
             if($jsonData == null){
                 $lista_personas = [];
@@ -73,6 +72,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $json_lista_personas = json_encode($lista_personas, JSON_PRETTY_PRINT);
     
             file_put_contents("bbdd/data.json", $json_lista_personas);
+
+            $date = date("Y-m-d H:i:s");
+            
+            setcookie("Ultimo_usuario", $usuario->email, time() + 3600 * 24 * 10, "/");
+            setcookie("Ultimo_usuario_fecha", $date, time() + 3600 * 24 * 10, "/");
+
             unset($_SESSION["usuario"]);
         }
         
@@ -80,4 +85,4 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     
 }
 
-header('Location: alta.php');
+header('Location: login.php');
