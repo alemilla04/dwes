@@ -1,6 +1,7 @@
 <?php
 require_once("funciones.php");
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,9 +12,16 @@ require_once("funciones.php");
 </head>
 <body>
     <?php
-        cabecera("Inicio", MENU_PRINCIPAL);
+        cabecera("Inicio", MENU_VOLVER);
     ?>
     <main>
+        <form action="./borrar-todo-2.php" method=post>
+            <p>¿Está seguro?</p>
+            <p>
+                <input type="submit" name=borrar value="Si">
+                <input type="submit" name=borrar value="No">
+            </p>
+        </form>
     </main>
 
     <?php
