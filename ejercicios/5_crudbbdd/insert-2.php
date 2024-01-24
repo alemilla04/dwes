@@ -33,9 +33,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             }
 
             if($nombreOK && $apellidosOK) {
-                $pdo = conectaDb();
-                $consulta = "INSERT INTO cfg[nombretabla]
-                            (nombre, apellidos) VALUES (:nombre, :apellidos)";
+                $pdo = conectarDb();
+                $consulta = "INSERT INTO $cfg[nombretabla] (nombre, apellidos) VALUES (:nombre, :apellidos)";
 
                 $resultado = $pdo->prepare($consulta);
 

@@ -18,6 +18,8 @@ function cabecera($texto, $menu) {
     if ($menu == MENU_PRINCIPAL) {
         print "<li><a href='insert.php'>Añadir registro</a></li>\n";
         print "<li><a href='show.php'>Listar</a></li>\n";
+        print "<li><a href='borrar-1.php'>Borrar</a></li>\n";
+        print "<li><a href='modify.php'>Modificar</a></li>\n";
         print "<li><a href='borrar-todo-1.php'>Borrar todo</a></li>\n";
     } elseif ($menu == MENU_VOLVER) {
         print "<li><a href='index.php'>Volver</a></li>\n";
@@ -35,6 +37,13 @@ function recoge($var){
             $tmp = trim(htmlspecialchars(strip_tags($_POST[$var])));
             return $tmp;
         }
+    }
+    return null;
+}
+
+function recogeLista($var){
+    if(isset($_REQUEST[$var]) && is_array($_REQUEST[$var])) {
+        return $_REQUEST[$var];
     }
     return null;
 }

@@ -29,7 +29,7 @@ require_once("funciones.php");
         if (!$resultado) {
             print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         } else {
-            print "    <form action='modify-2.php' method='post'>\n";
+            print "    <form action='borrar-2.php' method='post'>\n";
             print "    <p>Listado completo de registros:</p>\n";
             print "\n";
             print "    <table class=\"conborde franjas\">\n";
@@ -42,7 +42,7 @@ require_once("funciones.php");
             print "      </thead>\n";
             foreach ($resultado as $registro) {
                 print "      <tr>\n";
-                print "        <td class='centrado'><input type='radio' name='listaids[$registro[id]]'></td>\n";
+                print "        <td class='centrado'><input type='checkbox' name='listaids[$registro[id]]'></td>\n";
                 print "        <td>$registro[nombre]</td>\n";
                 print "        <td>$registro[apellidos]</td>\n";
                 print "      </tr>\n";
@@ -50,7 +50,7 @@ require_once("funciones.php");
             print "    </table>\n";
 
             print "<p>\n";
-            print "<input type=\"submit\" value=\"Modificar registro\">\n";
+            print "<input type=\"submit\" value=\"Borrar registro\">\n";
             print "<input type=\"submit\" value=\"Reiniciar formulario\">\n";
             print "</p>\n";
             print "    </form>\n";

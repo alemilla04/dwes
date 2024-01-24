@@ -16,7 +16,7 @@ require_once("funciones.php");
     ?>
 
     <main>
-        <form action="insertar-2.php" method='post'>
+        <form action="insert-2.php" method='post'>
             <p>Escriba los datos del nuevo registro: </p>
             <table>
                 <tr>
