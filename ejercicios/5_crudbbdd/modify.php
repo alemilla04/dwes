@@ -25,7 +25,7 @@ require_once("funciones.php");
         $consulta = "SELECT * FROM $cfg[nombretabla]";
 
         $resultado = $pdo->query($consulta);
-        $resultado = $pdo->query($consulta);
+        
         if (!$resultado) {
             print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
         } else {
@@ -42,7 +42,7 @@ require_once("funciones.php");
             print "      </thead>\n";
             foreach ($resultado as $registro) {
                 print "      <tr>\n";
-                print "        <td class='centrado'><input type='radio' name='listaids[$registro[id]]'></td>\n";
+                print "        <td class='centrado'><input type='radio' name=\"id\" value='$registro[id]'></td>\n";
                 print "        <td>$registro[nombre]</td>\n";
                 print "        <td>$registro[apellidos]</td>\n";
                 print "      </tr>\n";
