@@ -19,6 +19,7 @@ function cabecera($texto, $menu) {
         print "<li><a href='insert.php'>Añadir registro</a></li>\n";
         print "<li><a href='show.php'>Listar</a></li>\n";
         print "<li><a href='borrar-1.php'>Borrar</a></li>\n";
+        print "<li><a href='search.php'>Buscar</a></li>\n";
         print "<li><a href='modify.php'>Modificar</a></li>\n";
         print "<li><a href='borrar-todo-1.php'>Borrar todo</a></li>\n";
     } elseif ($menu == MENU_VOLVER) {
