@@ -1,5 +1,5 @@
 <?php
-require_once("funciones.php");
+require_once(__DIR__."../includes/funciones.php");
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +15,7 @@ require_once("funciones.php");
         cabecera("Inicio", MENU_VOLVER);
     ?>
     <main>
-        <form action="./borrar-todo-2.php" method=post>
+        <form action="backend/bbdd-delete-all.php" method=post>
             <p>¿Está seguro?</p>
             <p>
                 <input type="submit" name=borrar value="Si">

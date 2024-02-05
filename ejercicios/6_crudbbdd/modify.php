@@ -15,8 +15,8 @@ if(isset($_SESSION["errorBBDD"])) {
     $errorBBDD = $_SESSION["errorBBDD"];
 }
 
-if(isset($_SESSION["borrarOK"])) {
-    $borrarOK = $_SESSION["borrarOK"];
+if(isset($_SESSION["modificarOK"])) {
+    $modificarOK = $_SESSION["modificarOK"];
 }
 ?>
 
@@ -38,7 +38,7 @@ if(isset($_SESSION["borrarOK"])) {
     ?>
 
     <main>
-        <form action="backend/bbdd-modify.php" method="post">
+        <form action="backend/bbdd-obtener-id.php" method="post">
             <p>Listado completo de registros:</p>
             <table class="conborde franjas">
             <thead>
@@ -65,7 +65,16 @@ if(isset($_SESSION["borrarOK"])) {
         <input type="submit" value="Reiniciar formulario">
         </form>
         <?php
-            
+            if(isset($errorBBDD)) {
+                print "<p class='error'>$errorBBDD</p>";
+            }
+
+            if(isset($modificarOK) and $modificarOK == true) {
+                print "<p class='exito fade-in-out'>Registro modificado correctamente.</p>";
+            }
+
+            unset($_SESSION['modificarOK']);
+            unset($_SESSION['errorBBDD']);
         ?>
     </main>
     <?php

@@ -11,7 +11,7 @@ if(isset($_SESSION["listaPersonas"])) {
     exit();
 }
 ?>
-
+     
 <!DOCTYPE html>
 <html lang="es">
 

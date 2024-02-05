@@ -1,5 +1,4 @@
 <?php
-
 require_once(__DIR__ . "/../config.php");
 
 function pie() {
@@ -73,35 +72,27 @@ function conectarDb() {
 
 function borraTodo() {
     global $pdo, $cfg;
-
-    print "<p>Sistema Gestor de Base de Datos: MySQL</p>\n";
     
     $consulta = "DROP DATABASE IF EXISTS $cfg[mysqlDatabase]";
 
     if(!$pdo->query($consulta)) {
-        print "<p class=\"aviso\">Error al borrar la base de datos. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+        $_SESSION["errorBBDD"] = "<p>Error al borrar la base de datos. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
     } else {
-        print "<p>Base de datos borrada correctamente (si existía).</p>\n";
-
         $consulta = "CREATE DATABASE $cfg[mysqlDatabase]
                     CHARACTER SET utf8mb4
                     COLLATE utf8mb4_unicode_ci";
 
         if(!$pdo->query($consulta)) {
-            print "<p class=\"aviso\">Error al crear la base de datos. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+            $_SESSION["errorBBDD"] = "<p>Error al crear la base de datos. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
             return false;
         } else {
-            print "<p>Base de datos creada correctamente.</p>\n";
-
             $consulta = "USE $cfg[mysqlDatabase]";
 
             if(!$pdo->query($consulta)) {
-                print "<p class=\"aviso\">Error al seleccionar la base de datos. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+                $_SESSION["errorBBDD"] = "<p>Error al seleccionar la base de datos. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
                 return false;
             } else {
-                print "<p>Base de datos seleccionada correctamente.</p>\n";
-
-            $consulta = "CREATE TABLE $cfg[nombretabla] (
+                $consulta = "CREATE TABLE $cfg[nombretabla] (
                 id INTEGER UNSIGNED AUTO_INCREMENT,
                 nombre VARCHAR(255),
                 apellidos VARCHAR(255),
@@ -109,10 +100,8 @@ function borraTodo() {
                 )";
 
                 if(!$pdo->query($consulta)) {
-                    print "<p class=\"aviso\">Error al crear la tabla. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
+                    $_SESSION["errorBBDD"] = "<p>Error al crear la tabla. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
                     return false;
-                } else {
-                    print "<p>Tabla creada correctamente.</p>\n";
                 }
             }
         }

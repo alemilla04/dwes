@@ -1,11 +1,21 @@
 <?php
- require_once("funciones.php");
-    // print("<pre>");
-    // print_r($_POST);
-    // print("</pre>");
- if($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id = recoge("id");
- }
+session_start();
+require_once(__DIR__."/includes/funciones.php");
+// print "<pre>";
+// print_r($_SESSION["persona"]);
+// print "</pre>";
+if(isset($_SESSION["persona"])){
+    $persona = $_SESSION["persona"];
+}
+
+if(isset($_SESSION["errorNombre"])) {
+    $errorNombre = $_SESSION["errorNombre"];
+}
+
+if(isset($_SESSION["errorApellidos"])) {
+    $errorApellidos = $_SESSION["errorApellidos"];
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -21,48 +31,49 @@
         cabecera("MODIFICAR 2", MENU_VOLVER);
     ?>
     <main>
-        <form action="modify-3.php" method="POST">
+        <form action="backend/bbdd-modify.php" method="POST">
             <p>Modifique los campos que desee:</p>
-            <?php
-            $pdo = conectarDb();
-            $consulta = "SELECT * FROM $cfg[nombretabla] WHERE id = :id";
-            $resultado = $pdo->prepare($consulta);
-
-            if (!$resultado) {
-                print "    <p class=\"aviso\">Error en la consulta. SQLSTATE[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n";
-            } elseif (!$resultado->execute([":id"=>$id])){
-                print "<p class=\"aviso\">Error al ejecutar la consulta. SQLSTATE[{[{$pdo->errorCode()}]: {$pdo->errorInfo()[2]}</p>\n"; 
-            } else {
-                foreach($resultado as $registro){
-                    print "<table>\n";
-                    print "<tr>\n";
-                    print "<td>Nombre:</td>\n";
-                    print "<td>\n";
-                    print "<input type='text' name='nombre' value='$registro[nombre]'>\n";
-                    print "</td>\n";
-                    print "</tr>";
-                    print "<tr>";
-                    print "<td>Apellidos: </td>\n";
-                    print "<td>\n";
-                    print "<input type='text' name='apellidos' value='$registro[apellidos]'>\n";
-                    print "</td>\n";
-                    print "</tr>\n";
-                    print "<tr>\n";
-                    print "<td>\n";
-                    print "<input type='hidden' name='id' value='$registro[id]'>\n";
-                    print "</td>\n";
-                    print "</tr>\n";
-                    print "</table>\n";
-                }
-                print "<p>\n";
-                print "<input type='submit' value='Actualizar'>\n";
-                print "<input type='submit' value='Reiniciar formulario'>\n";
-                print "</p>\n";
-                $pdo = null;
-            }
-        
-            ?>
+            <table>
+                <tr>
+                    <td>Nombre: </td>
+                    <td>
+                    <?php
+                    print "<input type='text' name='nombre' value='$persona[nombre]'>\n";
+                    ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Apellidos: </td>
+                    <td>
+                    <?php
+                    print "<input type='text' name='apellidos' value='$persona[apellidos]'>\n";
+                    ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <?php
+                        print "<input type='hidden' name='id' value='$persona[id]'>\n";
+                        ?>
+                    </td>
+                </tr>
+            </table>
+            <p></p>
+            <input type="submit" value="Actualizar">
+            <input type="submit" value="Reiniciar formulario">
         </form>
+        <?php
+        if(isset($errorNombre)) {
+            print "<p class='error'>$errorNombre</p>";
+        }
+
+        if(isset($errorApellidos)) {
+            print "<p class='error'>$errorApellidos</p>";
+        }
+    
+        unset($_SESSION['errorNombre']);
+        unset($_SESSION['errorApellidos']);
+        ?>
     </main>
     <?php
         pie();
