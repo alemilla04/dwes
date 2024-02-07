@@ -1,5 +1,5 @@
 <?php
-
+require_once(__DIR__."/../src/funciones.php");
 header("Access-Control-Allow-Origin: *");
 
 // header("Content-Type: application/json; charset=UTF-8");
@@ -31,16 +31,67 @@ switch($requestMethod) {
     case 'GET': 
         if($userId != null){
             //Tenemos que conectarnos a la bbdd y devolver lista empleados.
-            $body = "Persona con id " . $userId;
-            header("HTTP/1.1 200 ok");
-            echo json_encode($body);
+            $pdo = conectarDb();
+            $empleado = getEmployeeBBDD($userId);
+
+            if($empleado == null) {
+                header("HTTP/1.1 500 Internat Server Error");
+                exit();
+            } 
+            $respuesta = $empleado;
+            header("HTTP/1.1 200");
+            echo json_encode($empleado);
             exit();
         } else{
-            $body = "Lista de empleados";
+            $pdo = conectarDb();
+            $listaEmpleados = getEmployeesBBDD();
+
+            if($listaEmpleados == null) {
+                header("HTTP/1.1 500 Internat Server Error");
+                exit();
+            }
+            $respuesta = $listaEmpleados;
             header("HTTP/1.1 200");
-            echo json_encode($body);
+            echo json_encode($respuesta);
             exit();
         }
+        break;
+    case 'POST':
+        $data = (array) json_decode(file_get_contents('php://input', TRUE));
+        $pdo = conectarDb();
+
+        $insercionOK = addEmployeeBBDD($data);
+        if($insercionOK) {
+            $respuesta = ["mensaje"=>"Empleado añadido."];
+            header("HTTP/1.1 201");
+            echo json_encode($respuesta);
+        } else {
+            $respuesta = ["mensaje"=>"Error al añadir persona."];
+            header("HTTP/1.1 500");
+            echo json_encode($respuesta);
+            exit();
+        }
+        break;
+    case 'DELETE':
+        if($userId == null) {
+            header("HTTP/1.1 404 Not Found");
+            exit();
+        } else {
+            $pdo = conectarDb();
+            $borrarOK = deleteEmployeeBBDD($userId);
+
+            if($borrarOK) {
+                $respuesta = ["mensaje" => "Empleado borrado."];
+                header("HTTP/1.1 200 OK");
+                echo json_encode($respuesta);
+            } else {
+                $respuesta = ["mensaje"=>"Error al borrar empleado."];
+                header("HTTP/1.1 500");
+                echo json_encode($respuesta);
+                exit();
+            } 
+        }
+        break;
     default:
         header("HTTP/1.1 404 Not Found");
         exit();
