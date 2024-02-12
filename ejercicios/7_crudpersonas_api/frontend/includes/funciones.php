@@ -19,7 +19,7 @@ function cabecera($texto, $menu) {
         print "<li><a href='show.php'>Listar</a></li>\n";
         print "<li><a href='borrar-1.php'>Borrar</a></li>\n";
         print "<li><a href='search.php'>Buscar</a></li>\n";
-        print "<li><a href='modify.php'>Modificar</a></li>\n";
+        print "<li><a href='modify-1.php'>Modificar</a></li>\n";
         print "<li><a href='borrar-todo-1.php'>Borrar todo</a></li>\n";
     } elseif ($menu == MENU_VOLVER) {
         print "<li><a href='index.php'>Volver</a></li>\n";
@@ -46,6 +46,34 @@ function recogeLista($var){
         return $_REQUEST[$var];
     }
     return null;
+}
+
+function conectar_endpoint($tipo, $url, $body)
+{
+
+    $curlHandle = curl_init();
+    curl_setopt($curlHandle, CURLOPT_URL, $url);
+    curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
+
+
+    //Header
+    $headers = array(
+        "Content-Type: application/json; charset=UTF-8"
+    );
+    curl_setopt($curlHandle, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($curlHandle, CURLOPT_HEADER, false);
+
+
+    if ($tipo == "POST") {
+        curl_setopt($curlHandle, CURLOPT_POST, 1);
+        curl_setopt($curlHandle, CURLOPT_POSTFIELDS, $body);
+    }
+
+
+    $response = curl_exec($curlHandle);
+    curl_close($curlHandle);
+
+    return $response;
 }
 
 function conectarDb() {
