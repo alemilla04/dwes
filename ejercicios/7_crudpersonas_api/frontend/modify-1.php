@@ -22,7 +22,7 @@ curl_close($curlHandle);
     ?>    
 
     <main>
-        <form action="modify-2.php">
+        <form action="controlador/obtenerPersona.php" method="POST">
             <p>Listado completo de registros:</p>
             <table class="conborde franjas">
                 <thead>

@@ -6,7 +6,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if($listaids!=null) {
         foreach($listaids as $id) {
-            $response = conectar_endpoint("DELETE", "127.0.0.1:8000", null);
+            $response = conectar_endpoint("DELETE", "http://127.0.0.1:8000/empleados/".$id, null);
         }
     }
 }

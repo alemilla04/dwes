@@ -19,7 +19,7 @@ function cabecera($texto, $menu) {
         print "<li><a href='show.php'>Listar</a></li>\n";
         print "<li><a href='borrar-1.php'>Borrar</a></li>\n";
         print "<li><a href='search.php'>Buscar</a></li>\n";
-        print "<li><a href='modify-1.php'>Modificar</a></li>\n";
+        print "<li><a href='modify.php'>Modificar</a></li>\n";
         print "<li><a href='borrar-todo-1.php'>Borrar todo</a></li>\n";
     } elseif ($menu == MENU_VOLVER) {
         print "<li><a href='index.php'>Volver</a></li>\n";
@@ -48,39 +48,6 @@ function recogeLista($var){
     return null;
 }
 
-function conectar_endpoint($tipo, $url, $body)
-{
-
-    $curlHandle = curl_init();
-    curl_setopt($curlHandle, CURLOPT_URL, $url);
-    curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
-
-
-    //Header
-    $headers = array(
-        "Content-Type: application/json; charset=UTF-8"
-    );
-    curl_setopt($curlHandle, CURLOPT_HTTPHEADER, $headers);
-    curl_setopt($curlHandle, CURLOPT_HEADER, false);
-
-
-    if ($tipo == "POST") {
-        curl_setopt($curlHandle, CURLOPT_POST, 1);
-        curl_setopt($curlHandle, CURLOPT_POSTFIELDS, $body);
-    } elseif ($tipo == "PUT") {
-        curl_setopt($curlHandle, CURLOPT_CUSTOMREQUEST, "PUT");
-        curl_setopt($curlHandle, CURLOPT_POSTFIELDS, $body);
-    } elseif ($tipo == "DELETE") {
-        curl_setopt($curlHandle, CURLOPT_CUSTOMREQUEST, "DELETE");
-        curl_setopt($curlHandle, CURLOPT_POSTFIELDS, $body);
-    }
-
-    $response = curl_exec($curlHandle);
-    curl_close($curlHandle);
-
-    return $response;
-}
-
 function conectarDb() {
     global $cfg;
 
@@ -103,7 +70,7 @@ function conectarDb() {
     }
 }
 
-function getPeopleBBDD() {
+function getEmployeesBBDD() {
     global $cfg;
     global $pdo;
 
@@ -113,34 +80,38 @@ function getPeopleBBDD() {
     if(!$resultado) {
         return null;
     } else {
-        $listaPersonas = array();
+        $listaEmpleados = array();
 
         foreach($resultado as $registro) {
-            $persona = array(
+            $empleado = array(
                 "id"=>$registro["id"],
-                "nombre"=>$registro["nombre"],
-                "apellidos"=>$registro["apellidos"],
+                "name"=>$registro["name"],
+                "address"=>$registro["address"],
+                "salary"=>$registro["salary"],
             );
-            array_push($listaPersonas, $persona);
+            array_push($listaEmpleados, $empleado);
         }
-        return $listaPersonas;
+        return $listaEmpleados;
     }
+
+
 }
 
-function addPersonBBDD($empleado) {
+function addEmployeeBBDD($empleado) {
     global $cfg;
     global $pdo;
     if($pdo != null){
-        $consulta = "INSERT INTO $cfg[nombretabla] (`nombre`, `apellidos`)
-         VALUES (:nombre, :apellidos)";
+        $consulta = "INSERT INTO $cfg[nombretabla] (`name`, `address`, `salary`)
+         VALUES (:name_, :address_, :salary_)";
         
         $resultado = $pdo->prepare($consulta);
     
         if(!$resultado) {
             return false;
         } elseif(!$resultado->execute([
-            ":nombre"=>$empleado["nombre"], 
-            ":apellidos"=>$empleado["apellidos"], 
+            ":name_"=>$empleado["name"], 
+            ":address_"=>$empleado["address"], 
+            ":salary_"=>$empleado["salary"]
             ])){
             return false;
         } else {
@@ -152,7 +123,7 @@ function addPersonBBDD($empleado) {
     }
 }
 
-function deletePersonBBDD($id) {
+function deleteEmployeeBBDD($id) {
     global $cfg;
     global $pdo;
     if($pdo != null){
@@ -173,7 +144,7 @@ function deletePersonBBDD($id) {
     }
 }
 
-function getPersonBBDD($id) {
+function getEmployeeBBDD($id) {
     global $cfg;
     global $pdo;
 

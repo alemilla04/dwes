@@ -12,3 +12,5 @@ $cfg["mysqlPassword"] = "";
 $cfg["mysqlDatabase"] = "crudpersonas";
 
 $cfg["nombretabla"] = "personas";
+
+define('APP_FOLDER', substr(__DIR__, strlen($_SERVER['DOCUMENT_ROOT'])));

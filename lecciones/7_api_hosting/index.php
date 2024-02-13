@@ -15,14 +15,14 @@ $uri = explode('/', $uri);
 
 $requestMethod = $_SERVER["REQUEST_METHOD"];
 
-if($uri[1] !== 'personas') {
+if($uri[4] !== 'empleados') {
     header("HTTP/1.1 404 Not Found");
     exit();
 }
 
 $userId = null;
-if(isset($uri[2])) {
-    $userId = (int)$uri[2];
+if(isset($uri[5])) {
+    $userId = (int)$uri[5];
 }
 
 
@@ -32,25 +32,25 @@ switch($requestMethod) {
         if($userId != null){
             //Tenemos que conectarnos a la bbdd y devolver lista empleados.
             $pdo = conectarDb();
-            $persona = getPersonBBDD($userId);
+            $empleado = getEmployeeBBDD($userId);
 
-            if($persona == null) {
+            if($empleado == null) {
                 header("HTTP/1.1 500 Internat Server Error");
                 exit();
             } 
-            $respuesta = $persona;
+            $respuesta = $empleado;
             header("HTTP/1.1 200");
-            echo json_encode($persona);
+            echo json_encode($empleado);
             exit();
         } else{
             $pdo = conectarDb();
-            $listaPersona = getPeopleBBDD();
+            $listaEmpleados = getEmployeesBBDD();
 
-            if($listaPersona == null) {
+            if($listaEmpleados == null) {
                 header("HTTP/1.1 500 Internat Server Error");
                 exit();
             }
-            $respuesta = $listaPersona;
+            $respuesta = $listaEmpleados;
             header("HTTP/1.1 200");
             echo json_encode($respuesta);
             exit();
@@ -60,9 +60,9 @@ switch($requestMethod) {
         $data = (array) json_decode(file_get_contents('php://input', TRUE));
         $pdo = conectarDb();
 
-        $insercionOK = addPersonBBDD($data);
+        $insercionOK = addEmployeeBBDD($data);
         if($insercionOK) {
-            $respuesta = ["mensaje"=>"Persona añadida."];
+            $respuesta = ["mensaje"=>"Empleado añadido."];
             header("HTTP/1.1 201");
             echo json_encode($respuesta);
         } else {
@@ -78,14 +78,14 @@ switch($requestMethod) {
             exit();
         } else {
             $pdo = conectarDb();
-            $borrarOK = deletePersonBBDD($userId);
+            $borrarOK = deleteEmployeeBBDD($userId);
 
             if($borrarOK) {
-                $respuesta = ["mensaje" => "Persona borrada."];
+                $respuesta = ["mensaje" => "Empleado borrado."];
                 header("HTTP/1.1 200 OK");
                 echo json_encode($respuesta);
             } else {
-                $respuesta = ["mensaje"=>"Error al borrar persona."];
+                $respuesta = ["mensaje"=>"Error al borrar empleado."];
                 header("HTTP/1.1 500");
                 echo json_encode($respuesta);
                 exit();

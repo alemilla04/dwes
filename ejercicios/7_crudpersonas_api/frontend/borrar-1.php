@@ -7,6 +7,16 @@ curl_setopt($curlHandle, CURLOPT_URL, "http://127.0.0.1:8000/personas");
 curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
 $listaPersonas = json_decode(curl_exec($curlHandle));
 curl_close($curlHandle);
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $listaids = recogeLista("listaids");
+
+    if($listaids!=null) {
+        foreach($listaids as $id) {
+            $response = conectar_endpoint("DELETE", "http://127.0.0.1:8000/empleados/".$id, null);
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

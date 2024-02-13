@@ -1,0 +1,7 @@
+
+RewriteEngine On
+RewriteBase /dwes/lecciones/7_api_hosting
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)$ index.php [QSA,L]
