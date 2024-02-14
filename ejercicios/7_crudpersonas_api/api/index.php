@@ -40,7 +40,7 @@ switch($requestMethod) {
             } 
             $respuesta = $persona;
             header("HTTP/1.1 200");
-            echo json_encode($persona);
+            echo json_encode($respuesta);
             exit();
         } else{
             $pdo = conectarDb();
@@ -91,6 +91,33 @@ switch($requestMethod) {
                 exit();
             } 
         }
+        break;
+    case 'PUT':
+        if($userId == null) {
+            header("HTTP/1.1 404 Not Found");
+            exit();
+        } else {
+            $pdo = conectarDb();
+            $persona = getPersonBBDD($userId);
+        }
+
+        if($persona == null) {
+            header("HTTP/1.1 500 Internat Server Error");
+            exit();
+        }
+        
+        $modificarOK = modifyPersonBBDD($persona);
+
+        if($modificarOK) {
+            $respuesta = ["mensaje" => "Persona modificada."];
+            header("HTTP/1.1 200 OK");
+            echo json_encode($respuesta);
+        } else {
+            $respuesta = ["mensaje"=>"Error al modificar persona."];
+            header("HTTP/1.1 500");
+            echo json_encode($respuesta);
+            exit();
+        } 
         break;
     default:
         header("HTTP/1.1 404 Not Found");

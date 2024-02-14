@@ -60,17 +60,22 @@ function conectar_endpoint($tipo, $url, $body)
     $headers = array(
         "Content-Type: application/json; charset=UTF-8"
     );
+    
     curl_setopt($curlHandle, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($curlHandle, CURLOPT_HEADER, false);
-
+    
 
     if ($tipo == "POST") {
         curl_setopt($curlHandle, CURLOPT_POST, 1);
         curl_setopt($curlHandle, CURLOPT_POSTFIELDS, $body);
-    } elseif ($tipo == "PUT") {
+    }
+    
+    if ($tipo == "PUT") {
         curl_setopt($curlHandle, CURLOPT_CUSTOMREQUEST, "PUT");
         curl_setopt($curlHandle, CURLOPT_POSTFIELDS, $body);
-    } elseif ($tipo == "DELETE") {
+    }
+
+    if ($tipo == "DELETE") {
         curl_setopt($curlHandle, CURLOPT_CUSTOMREQUEST, "DELETE");
         curl_setopt($curlHandle, CURLOPT_POSTFIELDS, $body);
     }
@@ -127,7 +132,7 @@ function getPeopleBBDD() {
     }
 }
 
-function addPersonBBDD($empleado) {
+function addPersonBBDD($persona) {
     global $cfg;
     global $pdo;
     if($pdo != null){
@@ -139,9 +144,30 @@ function addPersonBBDD($empleado) {
         if(!$resultado) {
             return false;
         } elseif(!$resultado->execute([
-            ":nombre"=>$empleado["nombre"], 
-            ":apellidos"=>$empleado["apellidos"], 
+            ":nombre"=>$persona["nombre"], 
+            ":apellidos"=>$persona["apellidos"], 
             ])){
+            return false;
+        } else {
+            return true;
+            $pdo = null;
+        }
+    } else {
+        return false;
+    }
+}
+
+function modifyPersonBBDD($persona){
+    global $cfg;
+    global $pdo;
+    if($pdo != null){
+        $consulta = "UPDATE $cfg[nombretabla] SET nombre = :nombre, apellidos = :apellidos WHERE id = :id";
+        
+        $resultado = $pdo->prepare($consulta);
+    
+        if(!$resultado) {
+            return false;
+        } elseif(!$resultado->execute([":nombre"=>$persona["nombre"], ":apellidos"=>$persona["apellidos"], ":id"=>$persona["id"]])){
             return false;
         } else {
             return true;

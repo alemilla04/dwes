@@ -119,6 +119,27 @@ function addPersonBBDD($empleado) {
     }
 }
 
+function modifyPersonBBDD($persona){
+    global $cfg;
+    global $pdo;
+    if($pdo != null){
+        $consulta = "UPDATE $cfg[nombretabla] SET nombre = :nombre, apellidos = :apellidos WHERE id = :id";
+        
+        $resultado = $pdo->prepare($consulta);
+    
+        if(!$resultado) {
+            return false;
+        } elseif(!$resultado->execute([":nombre"=>$persona["nombre"], ":apellidos"=>$persona["apellidos"], ":id"=>$persona["id"]])){
+            return false;
+        } else {
+            return true;
+            $pdo = null;
+        }
+    } else {
+        return false;
+    }
+}
+
 function deletePersonBBDD($id) {
     global $cfg;
     global $pdo;
@@ -153,6 +174,7 @@ function getPersonBBDD($id) {
     } elseif(!$resultado->execute([":id"=>$id])) {
         return null;
     }else{
+        //devuelve un array
         return $resultado->fetch(PDO::FETCH_ASSOC);
     }
 }

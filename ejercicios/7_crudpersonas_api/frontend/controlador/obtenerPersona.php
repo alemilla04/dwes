@@ -14,7 +14,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     else {
         $_SESSION["mensajeAPI"] = "Error al obtener la persona";
-        header("Location:".APP_FOLDER."/../modify-1.php");
+        header("Location:".APP_FOLDER."/../modify-2.php");
         exit();
     }
 }

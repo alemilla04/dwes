@@ -5,6 +5,19 @@ require_once(__DIR__."/includes/funciones.php");
 if(isset($_SESSION["persona"])){
     $persona = $_SESSION["persona"];
 }
+
+if(isset($_SESSION["errorNombre"])){
+    $errorNombre = $_SESSION["errorNombre"];
+}
+
+if(isset($_SESSION["errorApellidos"])){
+    $errorApellidos = $_SESSION["errorApellidos"];
+}
+
+if(isset($_SESSION["mensajeAPI"])){
+    $mensajeAPI = $_SESSION["mensajeAPI"];
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +61,23 @@ if(isset($_SESSION["persona"])){
             <p></p>
             <input type="submit" value="Actualizar">
             <input type="submit" value="Reiniciar formulario">
-            
+            <?php
+                if(isset($errorNombre)){
+                    print "<p class='error'>$errorNombre</p>";
+                }
+
+                if(isset($errorApellidos)){
+                    print "<p class='error'>$errorApellidos</p>";
+                }
+
+                if(isset($mensajeAPI)){
+                    print "<p class='error'>$mensajeAPI</p>";
+                }
+
+                unset($_SESSION["errorNombre"]);
+                unset($_SESSION["errorApellidos"]);
+                unset($_SESSION["mensajeAPI"]);
+            ?>
         </form>
     </main>
     <?php
