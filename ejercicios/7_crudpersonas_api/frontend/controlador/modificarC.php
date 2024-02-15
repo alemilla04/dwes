@@ -19,7 +19,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $body_array = array('nombre'=>$nombre, 'apellidos'=>$apellidos);
         $body = json_encode($body_array);
 
-        $response = conectar_endpoint("PUT", "http://127.0.0.1:8000/personas"."$id", $body);
+        $response = conectar_endpoint("PUT", "http://127.0.0.1:8000/personas/"."$id", $body);
 
         if($response) {
             $response = json_decode($response);

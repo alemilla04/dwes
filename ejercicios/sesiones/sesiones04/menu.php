@@ -4,7 +4,7 @@
 
 <nav>
   <ul>
-    <li class="izquierda"><a class="menu" href="home.php">Home</a></li>
+    <li class="izquierda"><a class="menu" href="index.php">Home</a></li>
     <li class="izquierda"><a class="menu" href="alta.php">Alta</a></li>
     <?php
 

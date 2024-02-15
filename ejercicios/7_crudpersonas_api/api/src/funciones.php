@@ -119,7 +119,7 @@ function addPersonBBDD($empleado) {
     }
 }
 
-function modifyPersonBBDD($persona){
+function modifyPersonBBDD($persona, $userId){
     global $cfg;
     global $pdo;
     if($pdo != null){
@@ -129,7 +129,7 @@ function modifyPersonBBDD($persona){
     
         if(!$resultado) {
             return false;
-        } elseif(!$resultado->execute([":nombre"=>$persona["nombre"], ":apellidos"=>$persona["apellidos"], ":id"=>$persona["id"]])){
+        } elseif(!$resultado->execute([":nombre"=>$persona["nombre"], ":apellidos"=>$persona["apellidos"], ":id"=>$userId])){
             return false;
         } else {
             return true;

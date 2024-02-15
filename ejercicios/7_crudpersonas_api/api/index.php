@@ -97,8 +97,9 @@ switch($requestMethod) {
             header("HTTP/1.1 404 Not Found");
             exit();
         } else {
+            $persona = (array) json_decode(file_get_contents('php://input', TRUE));
             $pdo = conectarDb();
-            $persona = getPersonBBDD($userId);
+            $modificarOK = modifyPersonBBDD($persona, $userId);
         }
 
         if($persona == null) {
@@ -106,8 +107,6 @@ switch($requestMethod) {
             exit();
         }
         
-        $modificarOK = modifyPersonBBDD($persona);
-
         if($modificarOK) {
             $respuesta = ["mensaje" => "Persona modificada."];
             header("HTTP/1.1 200 OK");
