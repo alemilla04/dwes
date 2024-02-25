@@ -2,11 +2,20 @@
 session_start();
 require_once(__DIR__."/includes/funciones.php");
 
-$curlHandle = curl_init();
-curl_setopt($curlHandle, CURLOPT_URL, "http://127.0.0.1:8000/personas");
-curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
-$listaPersonas = json_decode(curl_exec($curlHandle));
-curl_close($curlHandle);
+// $curlHandle = curl_init();
+// curl_setopt($curlHandle, CURLOPT_URL, "http://127.0.0.1:8000/personas");
+// curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
+// $listaPersonas = json_decode(curl_exec($curlHandle));
+// curl_close($curlHandle);
+
+$response = conectar_endpoint("GET", "http://127.0.0.1:8000/personas", null);
+
+if($response){
+    $listaPersonas = json_decode($response);
+} else{
+    $_SESSION["mensajeAPI"] = "Error al obtener la lista";
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

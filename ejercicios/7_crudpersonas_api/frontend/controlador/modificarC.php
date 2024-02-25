@@ -19,7 +19,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $body_array = array('nombre'=>$nombre, 'apellidos'=>$apellidos);
         $body = json_encode($body_array);
 
-        $respuesta = conectar_endpoint("PUT", "http://127.0.0.1:8000/personas", $body);
+        $response = conectar_endpoint("PUT", "http://127.0.0.1:8000/personas/"."$id", $body);
 
         if($response) {
             $response = json_decode($response);
@@ -27,7 +27,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         } else{
             $_SESSION["mensajeAPI"] = "Error: No se ha podido modificar los datos.";
         }
-        header("Location:".APP_FOLDER."/../modify-1.php");
+        header("Location:".APP_FOLDER."/../modify-2.php");
         exit();
     }
 } else{

@@ -12,8 +12,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $listaids = recogeLista("listaids");
 
     if($listaids!=null) {
-        foreach($listaids as $id) {
-            $response = conectar_endpoint("DELETE", "http://127.0.0.1:8000/empleados/".$id, null);
+        foreach($listaids as $id => $valor) {
+            $response = conectar_endpoint("DELETE", "http://127.0.0.1:8000/personas/".$id, null);
+        }
+        if($response){
+            $response = json_decode($response);
+            $_SESSION["mensajeAPI"] = $response->mensaje;
+        }else {
+            $_SESSION["mensajeAPI"] = "Error al borrar a la(s) persona(s)";
         }
     }
 }
@@ -32,7 +38,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     ?>    
 
     <main>
-        <form action="<?php echo $_SERVER["PHP_SELF"];?>">
+        <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
             <p>Listado completo de registros:</p>
             <table class="conborde franjas">
                 <thead>

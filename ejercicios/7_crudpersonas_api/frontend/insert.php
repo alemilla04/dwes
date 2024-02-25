@@ -10,8 +10,8 @@ if(isset($_SESSION["errorApellidos"])) {
     $errorApellidos = $_SESSION["errorApellidos"];
 }
 
-if(isset($_SESSION["errorBBDD"])) {
-    $errorBBDD = $_SESSION["errorBBDD"];
+if(isset($_SESSION["mensajeAPI"])) {
+    $mensajeAPI = $_SESSION["mensajeAPI"];
 }
 
 if(isset($_SESSION["insertarOK"])) {
@@ -33,7 +33,7 @@ if(isset($_SESSION["insertarOK"])) {
     ?>
 
     <main>
-        <form action="controlador/insert.php" method='post'>
+        <form action="controlador/insertC.php" method='post'>
             <p>Escriba los datos del nuevo registro: </p>
             <table>
                 <tr>
@@ -58,17 +58,13 @@ if(isset($_SESSION["insertarOK"])) {
         if(isset($errorApellidos)) {
             print "<p class='error'>$errorApellidos</p>";
         }
-        if(isset($errorBBDD)) {
-            print "<p class='error'>$errorBBDD</p>";
-        }
-        if(isset($insertarOK) && $insertarOK == true) {
-            print "<p class='exito fade-in-out'>Persona creada correctamente</p>";
+        if(isset($mensajeAPI)) {
+            print "<p class='error'>$mensajeAPI</p>";
         }
 
         unset($_SESSION['errorNombre']);
         unset($_SESSION['errorApellidos']);
-        unset($_SESSION['errorBBDD']);
-        unset($_SESSION['insertarOK']);
+        unset($_SESSION['mensajeAPI']);
         ?>
     </main>
 

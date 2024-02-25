@@ -12,5 +12,12 @@
         "email": "cari@gmail.com",
         "password": "$2y$10$eAPZd0JjgykOIKcHF.ufW.D88pQMlgHKw7itXVNovPFE0G3fBgjQS",
         "imagen": "alexa.JPG"
+    },
+    {
+        "nombre": "juan",
+        "apellidos": "vi",
+        "email": "ale@gmail",
+        "password": "$2y$10$mEZhaZ9PCA9MnhUOcWq0BemZGRWbauPldELnOANKtSI184mvj8t5m",
+        "imagen": null
     }
 ]
