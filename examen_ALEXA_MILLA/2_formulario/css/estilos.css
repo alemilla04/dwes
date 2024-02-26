@@ -1,0 +1,187 @@
+
+body {
+    margin: 0px;
+    background-color: lightgray;
+    font-family: sans-serif;
+}
+
+main {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.3em;
+}
+
+h2{
+  text-align: center;
+}
+
+header h1{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color:white;
+  background-color:brown;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+
+.centrado{
+  text-align: center;
+}
+
+/* esto es para el menu */
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  justify-content: center;
+}
+
+
+a.menu {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+
+
+a.menu:hover {
+  background-color: brown;
+}
+
+/*fin del menu*/
+
+footer {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+
+.error{
+    color: red;
+    font-size: 1.3em;
+
+}
+
+.exito{
+    background-color: green;
+    color: #fff;
+   
+    border-radius: 10px;
+    padding: 16px;
+
+}
+
+.borde{
+    border: 1px solid black;
+    padding: 10px;
+}
+
+
+
+/* Para el mensaje */
+.fade-in-out {
+    opacity: 0;
+    animation: fade-in 0.5s ease-in forwards, fade-out 4s 1s ease-out forwards;
+    
+  }
+  
+  @keyframes fade-in {
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fade-out {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+
+  /* Para el formulario de login */
+  
+  .box_nuevanoticia{
+    margin: auto;
+    max-width: 500px;
+    padding: 10px;
+    
+  }
+  
+input,textarea{
+  width: 100%;
+}
+
+button{
+  margin: 20px auto;
+  background-color: brown;
+  padding: 10px 30px;
+  border-radius: 6px;
+  color: white;
+  font-size: 1.3rem;
+  border: 0px;
+}
+
+button a{
+  text-decoration: none;
+  color: white;
+}
+
+.categorias{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+}
+
+
+.lista_noticias{
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+
+}
+
+/* para la tabla */
+table.conborde,
+table.conborde td,
+table.conborde th {
+    border: black 1px solid;
+    border-collapse: collapse;
+    
+}
+
+thead tr
+{
+    background-color: black;
+    color: white;
+}
+
+tbody tr{
+  background-color: white;
+}
+
+td,
+th {
+    padding-right: 5px;
+    padding-left: 5px;
+    
+}

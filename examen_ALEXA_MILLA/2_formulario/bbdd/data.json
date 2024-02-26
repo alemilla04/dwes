@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "titulo": "Mbappe al Madrid",
+        "cuerpo": "Mbappe finalmente va a fichar por el Real Madrid, todo un \u00e9xito de Florentino P\u00e9rez",
+        "autor": "Alicia",
+        "fecha": "2023-03-12",
+        "categoria": "deportes"
+    },
+    {
+        "id": 6,
+        "titulo": "Incendio en Valencia",
+        "cuerpo": "Un terrible incendio en un edificio de Valencia deja 10 v\u00edctimas mortales",
+        "autor": "El Mundo",
+        "fecha": "2024-02-23",
+        "categoria": "sucesos"
+    },
+    {
+        "id": 7,
+        "titulo": "Tamara Falco se divorcia",
+        "cuerpo": "Poco ha durado el matrimonio entre Tamara e \u00cd\u00f1igo. Se han separado.",
+        "autor": "Lecturas",
+        "fecha": "2024-03-08",
+        "categoria": "corazon"
+    }
+]
