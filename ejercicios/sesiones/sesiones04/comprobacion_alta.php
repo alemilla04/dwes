@@ -40,6 +40,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $_SESSION["passwordERROR"] = "Error, las contraseñas no coinciden";
                     $_SESSION["ok"] = false;
                     header("Location: alta.php");
+                    exit();
                 } else{
                     unset($_SESSION["passwordERROR"]);
                     $_SESSION["usuario"]["password"] = $password;

@@ -1,0 +1,23 @@
+[
+    {
+        "nombre": "alexa",
+        "apellidos": "milla",
+        "email": "alexa@gmail.com",
+        "password": "$2y$10$2h9qRrwAg1ya5XNIu.UGWe.F3bL4WIY\/BKEmBkELqXuaL0CXckhxS",
+        "imagen": "default.png"
+    },
+    {
+        "nombre": "alexa",
+        "apellidos": "milla",
+        "email": "alexamilla@gmail.com",
+        "password": "$2y$10$lXWISzTIU9BUWFHRGofmKuXyDTBe0RIUlOz1or37xH3RX.lp3xrlW",
+        "imagen": "alexa.jpg"
+    },
+    {
+        "nombre": "joaquin",
+        "apellidos": "murillo",
+        "email": "joaco@gmail.com",
+        "password": "$2y$10$uex2S.Rx7vD8jNLXDXYwTe2P13vEswp3hCBL3vcXRFue\/xehZQui6",
+        "imagen": "alexa.jpg"
+    }
+]
